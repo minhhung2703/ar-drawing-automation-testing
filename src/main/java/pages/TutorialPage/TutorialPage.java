@@ -7,7 +7,8 @@ import pages.baseScreen.BaseScreen;
 
 public class TutorialPage extends BaseScreen {
 
-    private By headerTitleTutorialLocator = AppiumBy.id("tv_tutorial");
+    private By headerTitleTutorialLocator = AppiumBy
+            .id("ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_tutorial");
 
     private By gifTutorialLocator = AppiumBy.xpath(
             "//android.widget.FrameLayout[@resource-id=\"ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/exo_subtitles\"]/android.view.View");
@@ -20,27 +21,27 @@ public class TutorialPage extends BaseScreen {
     }
 
     public boolean isHeaderDisplayed() {
-        return driver.findElement(headerTitleTutorialLocator).isDisplayed();
+        return waitForElementVisible(headerTitleTutorialLocator).isDisplayed();
     }
 
     public boolean isGifTutorialDisplayed() {
-        return driver.findElement(gifTutorialLocator).isDisplayed();
+        return waitForElementVisible(gifTutorialLocator).isDisplayed();
     }
 
     public boolean isButtonDisplayed() {
-        return driver.findElement(buttonStartLocator).isDisplayed();
+        return waitForElementVisible(buttonStartLocator).isDisplayed();
     }
 
     public String getTitleHeaderTutorial() {
-        return driver.findElement(headerTitleTutorialLocator).getText();
+        return waitForElementVisible(headerTitleTutorialLocator).getText();
     }
 
     public void clickStartButton() {
-        driver.findElement(buttonStartLocator).click();
+        waitForElementVisible(buttonStartLocator).click();
     }
 
     public void doubleClick() {
-        doubleTap(driver.findElement(buttonStartLocator));
+        doubleTap(waitForElementVisible(buttonStartLocator));
     }
 
 }

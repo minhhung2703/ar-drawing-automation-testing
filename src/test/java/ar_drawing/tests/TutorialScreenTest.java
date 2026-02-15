@@ -14,12 +14,11 @@ public class TutorialScreenTest extends BaseTest {
     public void initPage() {
         splashScreen = new SplashScreen(driver);
         tutorialPage = new TutorialPage(driver);
-
-        Assert.assertTrue(splashScreen.isDisplaySplashScreen());
     }
 
     @Test(priority = 0, description = "Verify that the title header is displayed on the Tutorial Screen")
     public void TestTitleHeaderDisplay() {
+        Assert.assertTrue(splashScreen.isDisplaySplashScreen());
         Assert.assertTrue(tutorialPage.isHeaderDisplayed());
         Assert.assertEquals(tutorialPage.getTitleHeaderTutorial(), "Tutorial");
     }

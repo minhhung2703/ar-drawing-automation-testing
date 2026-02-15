@@ -9,33 +9,40 @@ import org.openqa.selenium.interactions.Sequence;
 
 import java.time.Duration;
 import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class BaseScreen {
     protected AndroidDriver driver;
 
-    public BaseScreen(AndroidDriver driver){
+    public BaseScreen(AndroidDriver driver) {
         this.driver = driver;
     }
 
-    public void doubleTap(WebElement element){
+    public WebElement waitForElementVisible(By locator) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public void doubleTap(WebElement element) {
         // Get element position & size
         Rectangle rect = element.getRect();
-        int centerX = rect.getX()+ rect.getWidth() / 2;
-        int centerY = rect.getY()+ rect.getHeight() / 2;
+        int centerX = rect.getX() + rect.getWidth() / 2;
+        int centerY = rect.getY() + rect.getHeight() / 2;
 
         // Create finger for Android touch
         PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
 
         // Create W3C action sequence
-        Sequence doubleTap = new Sequence(finger,1);
+        Sequence doubleTap = new Sequence(finger, 1);
 
         // Move to element center
         doubleTap.addAction(finger.createPointerMove(
                 Duration.ZERO,
                 PointerInput.Origin.viewport(),
                 centerX,
-                centerY
-        ));
+                centerY));
 
         // Firstly Tap
         doubleTap.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
