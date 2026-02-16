@@ -28,15 +28,21 @@ public class TutorialScreenTest extends BaseTest {
         Assert.assertTrue(tutorialPage.isGifTutorialDisplayed());
     }
 
-    @Test(priority = 2, description = "")
+    @Test(priority = 2, description = "Verify displayed Start Button on the Tutorial Screen")
     public void TestStartButtonDisplay() {
         Assert.assertTrue(tutorialPage.isButtonDisplayed());
     }
 
-    @Test(priority = 3, description = "Verify clicking the Start button")
+    @Test(priority = 3, description = "Verify that clicking the Start button is successful, then check that the Ads screen is displayed")
     public void TestClickStartButton() {
         tutorialPage.clickStartButton();
+        tutorialPage.handleAdIfPresent();
     }
+
+//    @Test(priority = 4, description = "Verify displayed the Ads Screen")
+//    public void TestAdsDisplayed(){
+//
+//    }
 
     //@Test(description = "Verify double click Start button")
     public void doubleClickStartButton() {

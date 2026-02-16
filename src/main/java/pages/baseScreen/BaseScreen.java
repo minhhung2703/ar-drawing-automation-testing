@@ -1,5 +1,6 @@
 package pages.baseScreen;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.WebElement;
@@ -59,4 +60,33 @@ public class BaseScreen {
         driver.perform(List.of(doubleTap));
     }
 
+    public boolean isAdDisplayed() {
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+
+            // Find Ads Element
+            By adsElements = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"adContainer\"]");
+
+            return wait.until(ExpectedConditions.presenceOfElementLocated(adsElements)).isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public void handleAdIfPresent(){
+        if(isAdDisplayed()) {
+            try {
+                System.out.println(">>> Ad detected! Processing...");
+                WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
+                // Waiting display Close Text
+                By closeBtn = AppiumBy.id("dismiss-button");
+                WebElement element = waitForElementVisible(closeBtn);
+                element.click();
+                System.out.println(">>> Closed Ads successfully");
+            } catch (Exception e) {
+                System.out.println(">>> Close Ads failed");
+            }
+        }
+    }
 }
