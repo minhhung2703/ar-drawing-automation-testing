@@ -65,7 +65,7 @@ public class BaseScreen {
             WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 
             // Find Ads Element
-            By adsElements = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"adContainer\"]");
+            By adsElements = AppiumBy.xpath("//android.view.View[@resource-id=\"mys-creative\"]/android.widget.TextView");
 
             return wait.until(ExpectedConditions.presenceOfElementLocated(adsElements)).isDisplayed();
         } catch (Exception e) {
