@@ -54,6 +54,8 @@ public class HomeScreen extends BaseScreen {
         return waitForElementVisible(buttonProLocator).isDisplayed();
     }
 
+
+    // Doing verifyAllCategoryTitleVisible function
     public void verifyAllCategoryTitleVisible(String tabName){
         // Waiting and getting elements
         List<WebElement> elements = waitForAllElementsVisible(AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_main_title\" and @text=\"Hot trend\"]/ancestor::androidx.recyclerview.widget.RecyclerView//android.widget.TextView[@resource-id='ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_main_title']"));
