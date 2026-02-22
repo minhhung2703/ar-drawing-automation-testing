@@ -74,8 +74,21 @@ public class HomeScreen extends BaseScreen {
         Set<String> uniqueTilteCategoryItem = new HashSet<>(allTitles);
 
         if(uniqueTilteCategoryItem.size() < allTitles.size()){
-
+            // found duplicate title Category Item
+            String duplicateName = findDuplicate(allTitles);
+            // Sử dụng Assert để làm fail test case
+            Assert.fail("Thất bại: Phát hiện tiêu đề bị trùng lặp! Tên trùng: " + duplicateName);
         }
+    }
+
+    private String findDuplicate(List<String> list){
+        Set<String> set = new HashSet<>();
+        for(String name : list) {
+            if(!set.add(name)){
+                return name;
+            }
+        }
+        return "undefined";
     }
 
 }
