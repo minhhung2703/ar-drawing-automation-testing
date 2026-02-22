@@ -9,6 +9,8 @@ import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
 
 import java.time.Duration;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -24,6 +26,15 @@ public class BaseScreen {
     public WebElement waitForElementVisible(By locator) {
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+    }
+
+    public List<WebElement> waitForAllElementsVisible(By locator){
+        try {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+            return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        } catch(Exception e) {
+            return Collections.emptyList(); // return empty list
+        }
     }
 
     public void doubleTap(WebElement element) {
