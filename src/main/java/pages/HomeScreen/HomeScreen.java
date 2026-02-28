@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pages.baseScreen.BaseScreen;
 
 import java.util.ArrayList;
@@ -74,8 +75,23 @@ public class HomeScreen extends BaseScreen {
         Set<String> uniqueTilteCategoryItem = new HashSet<>(allTitles);
 
         if(uniqueTilteCategoryItem.size() < allTitles.size()){
-
+            // found duplicate title Category Item
+            String duplicateName = findDuplicate(allTitles);
+            // Sử dụng Assert để làm fail test case
+            Assert.fail("Thất bại: Phát hiện tiêu đề bị trùng lặp! Tên trùng: " + duplicateName);
+        } else {
+            System.out.println("Thành công: Tất cả " + allTitles.size() + " tiêu đề đều duy nhất.");
         }
+    }
+
+    private String findDuplicate(List<String> list){
+        Set<String> set = new HashSet<>();
+        for(String name : list) {
+            if(!set.add(name)){
+                return name;
+            }
+        }
+        return "undefined";
     }
 
 }
