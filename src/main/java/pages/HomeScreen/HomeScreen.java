@@ -21,7 +21,7 @@ public class HomeScreen extends BaseScreen {
 
     // Tab Category Locator on Home Screen
     private By galleryTabLocator = AppiumBy.xpath("//android.widget.ImageView/following-sibling::android.widget.TextView[@text='From Gallery']");
-    private By CameraTabLocator = AppiumBy.xpath("//android.widget.ImageView/following-sibling::android.widget.TextView[@text='From Gallery']");
+    private By cameraTabLocator = AppiumBy.xpath("//android.widget.ImageView/following-sibling::android.widget.TextView[@text='From Gallery']");
 
     // Tab bar Locator
     private By drawingIconLocator = AppiumBy.androidUIAutomator("new UiSelector().text(\"Drawing\")");
@@ -49,6 +49,22 @@ public class HomeScreen extends BaseScreen {
 
     public boolean isHelpIconDisplayed(){
         return waitForElementVisible(helpIconLocator).isDisplayed();
+    }
+
+    public boolean isgalleryTabDisplayed(){
+        return waitForElementVisible(galleryTabLocator).isDisplayed();
+    }
+
+    public boolean isCameraTabDisplayed(){
+        return waitForElementVisible(cameraTabLocator).isDisplayed();
+    }
+
+    public String getTextGalleryTab(){
+        return waitForElementVisible(galleryTabLocator).getText();
+    }
+
+    public String getTextCameraTab(){
+        return waitForElementVisible(cameraTabLocator).getText();
     }
 
     public boolean isProButtonDisplayed(){

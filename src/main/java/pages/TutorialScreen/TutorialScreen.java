@@ -8,7 +8,7 @@ import pages.baseScreen.BaseScreen;
 public class TutorialScreen extends BaseScreen {
     private By headerTitleTutorialLocator = AppiumBy.id("ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_tutorial");
     private By gifTutorialLocator = AppiumBy.xpath("//android.widget.FrameLayout[@resource-id=\"ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/exo_subtitles\"]/android.view.View");
-    private By buttonStartLocator = AppiumBy.xpath("//android.widget.TextView[@resource-id=\"ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_got_it\"]");
+    private By buttonStartLocator = AppiumBy.id("ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/tv_got_it");
     private By homeScreenLocator = AppiumBy.androidUIAutomator("new UiSelector().resourceId(\"ar.drawing.paint.draw.sketch.art.trace.drawing.app:id/cl_bg\").instance(0)");
 
     public TutorialScreen(AndroidDriver driver) {
